@@ -1,0 +1,4 @@
+/traders_portal/traders_portal/.env
+*__pycache__
+/venv
+/credentials

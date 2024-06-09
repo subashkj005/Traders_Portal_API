@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <title>Traders Portal</title>
+</head>
+<body class="bg-gradient-to-r from-blue-600 to-violet-600 h-screen w-screen flex items-center justify-center">
+    <div class="p-3 bg-gradient-to-r from-blue-400 to-violet-500 rounded-lg">
+        <div class="bg-gradient-to-r from-blue-400 to-violet-500 h-96 w-96 rounded-lg border-4 border- flex flex-col justify-evenly items-center p-4">
+            <div>
+                <h1 class="text-4xl text-center font-bold" id="login-heading">
+                    Google Login
+                </h1>
+            </div>
+            <div>
+                <p class="text-xl font-bold" id="login-text">
+                </p>
+            </div>
+            <div class="flex items-center justify-center space-x-4 border-2 border-white bg-slate-100 rounded-full p-2 m-4 cursor-pointer"
+            id="google-btn" onclick="firebaseOAuthSignIn()"
+            >
+                <img
+                  class="w-10 h-10"
+                  src="https://img.icons8.com/fluency/240/google-logo.png"
+                  alt="google-logo"
+                />
+                <p class="text-base font-medium text-slate-600" id="google-sign-btn">
+                    Sign in with Google
+                </p>
+            </div>
+            <div id="firebaseui-auth-container"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var firebaseConfig = {
+            apiKey: "{{ firebase_config.apiKey }}",
+            authDomain: "{{ firebase_config.authDomain }}",
+            projectId: "{{ firebase_config.projectId }}",
+            storageBucket: "{{ firebase_config.storageBucket }}",
+            messagingSenderId: "{{ firebase_config.messagingSenderId }}",
+            appId: "{{ firebase_config.appId }}",
+        };
+    </script>
+    <script src="{% static '/js/firebase_config.js' %}"></script>
+</body>
+
+</html>
