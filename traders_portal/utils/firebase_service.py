@@ -7,14 +7,15 @@ from firebase_admin._auth_utils import InvalidIdTokenError, UserNotFoundError
 
 def firebase_validation(id_token):
     """
-    This function receives id token sent by Firebase and
-    validate the id token then check if the user exist on
-    Firebase or not if exist it returns True else False
+    This function receives an id token sent by Firebase,
+    validates the id token, and checks if the user exists on
+    Firebase. If the user exists, it returns a dictionary with user details; otherwise, it returns False.
     """
     try:
         decoded_token = auth.verify_id_token(id_token)
         uid = decoded_token['uid']
         name = decoded_token.get('name', None)
+        
         try:
             user = auth.get_user(uid)
             if user:
@@ -30,10 +31,16 @@ def firebase_validation(id_token):
             print("Firebase: User not found")
             return False
         except InvalidIdTokenError:
-            print(
-                'Firebase: Invalid token or unable to decrypt code with current credentials.')
+            print('Firebase: Invalid token or unable to decrypt code with current credentials.')
+            return False
+        except Exception as e:
+            print(f"Firebase: An unexpected error occurred: {e}")
+            return False
     except ExpiredIdTokenError:
         print("Firebase: Invalid token")
+        return False
+    except Exception as e:
+        print(f"Firebase: An unexpected error occurred during token verification: {e}")
         return False
 
 

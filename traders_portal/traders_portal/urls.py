@@ -18,6 +18,7 @@ urlpatterns = [
     
     path('', google_login_page, name="google_login_page"),
     path('api/v1/auth/', include('users.urls')),
+    path('api/v1/company/', include('companies.urls')),
     
 ]
 

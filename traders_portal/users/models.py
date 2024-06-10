@@ -45,11 +45,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     def __str__(self) -> str:
         return self.email
 
-# # class Company(models.Model):
-# #     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-# #     company_name = models.CharField(max_length=255, null=False,blank=False)
-# #     symbol = models.CharField(max_length=255, null=True, blank=True)
-# #     scripcode = models.CharField(max_length=255, null=True, blank=True)
+
 
 
 
