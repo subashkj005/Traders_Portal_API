@@ -18,11 +18,11 @@ function firebaseOAuthSignIn() {
                 sendTokenToBackend(token);
             })
             .catch(tokenError => {
-                console.error('Error while token retrieval', tokenError);
+                // console.error('Error while token retrieval', tokenError);
             });
         })
         .catch((error) => {
-            console.error('Error while google signin', error.json())
+            // console.error('Error while google signin', error.json())
         });
     });
 }
@@ -41,7 +41,7 @@ function sendTokenToBackend(token) {
         updateUserDetails(data.data)
     })
     .catch((error) => {
-        console.error('OAuth Login Error:', error);
+        // console.error('OAuth Login Error:', error);
     });
 }
 

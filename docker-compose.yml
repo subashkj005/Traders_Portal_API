@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  traders_portal_api:
+      build: .
+      image: subashkj005/test_apis:traders_portal
+      container_name: traders_portal_container
+      ports:
+       - 8000:8000
